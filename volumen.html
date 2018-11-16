@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Volumen esferas</h2>
+
+    <form action="/create" method="post">
+    Radio: <br>
+    <input type="number" name="firstname" value="" onblur="check(this)">
+    <br>
+    <input type="submit" name="lastname" value="submit" onblur="check(this)">
+   </form>
+
+   <p>El Volumen de la esfera es: </p>
+   <p id="result"></p>
+
+
+<!-- escriba una funcion al dar click en submit tome el denumeros
+y calcule el volumen d una esfera d ese radio y agregue el elemento
+con id="result" -->
+<script>
+function check(obj) {
+  if(!obj.value) {
+    document.getElementById("button").setAttribute("disabled", true);
+  } else {
+  document.getElementById("button").removeAttribute("disabled");
+  }
+}
+</script>
+</body>
+</html>

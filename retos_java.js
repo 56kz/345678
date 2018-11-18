@@ -567,27 +567,134 @@
 
 
 
-// function compose(string){
+// function compose(string, object){
 //   let capture = string.match(/\[(.*?)\]/gi);
-//   let captureTwo = capture[0].slice(1, -1);
-//   let captureThree = string.split(/\[(.*?)\]/);
-//   console.log(captureThree);
-//   // if (captureTwo == nombre) {
-//   //
-//   // }
+//   // console.log(capture);//el match de los elemntos en []
+//   let match = [];
+//   capture.forEach(item => {
+//     match.push(item.slice(1, -1));
+//   });
+//   // console.log(match); //array con los keys del substring
+//
+//   match.forEach(item => {
+//     let result = "";
+//   for(key in object){
+//      // console.log(key);
+//      // console.log(object[key]);
+//      if (key === item) {
+//        // console.log(key)
+//        // console.log(string.replace(key, "oli"));
+//        result += string.replace(key, "oli")
+//      }
+//   }
+//   console.log(result);
+//   });
+//
+//
+//   // let captureTwo = capture[0].slice(1, -1);
+//   // console.log(captureTwo); // el elemtn sin las []
+//   // let captureThree = string.split(/\[(.*?)\]/);
+//   // console.log(captureThree); // el array final listo para modificar
+//
 //
 // }
-// compose("Hola [nombre] .");
+// let arrayOne = "Hola [name], tienes [age] y estas [status].";
+// let objectOne = {
+//   name: "Zorro",
+//   age: 28,
+//   status: "Zorriando"
+// };
+//
+// compose(arrayOne, objectOne);
 
 
-
-
-
-
+//Intento 3
+// let arrayOne = "Hola [name], tienes [age].";
+// let objectOne = {
+//   name: "Zorro",
+//   age: 28
+// };
+//
+// function compose(string, object){
+//   for(key in object){
+//     // console.log(key + object[key]);
+//     key
+//   }
+//   console.log(keys) //variable con todos los key
+//
+//
+// }
+//
+// compose(arrayOne, objectOne);
 
 // como sacar el key y value del objeto
-function object(object){
-  console.log(object);
+// function object(object){
+//   for(key in object){
+//    console.log(key);
+//    console.log(object[key]);
+//   }
+// }
+//
+// object(properties);
+//
+// // comparar el objeto con el substrin
+// let string = "Hola [name], eres [status], y tienes [age].";
+// let properties = {
+//   name:  "German",
+//   status: "Soltero",
+//   age: 23
+// }
+//
+// function compare(string, properties){
+//   for(key in properties){
+//    console.log(key);
+//    console.log(properties[key]);
+//    if (true) {
+//
+//    }
+//   }
+// }
 
+
+
+// intento 4
+// coger string y dividirlo en un array de palabras
+// iterar ese array
+// si encontrar [] para reemplazarlas por los value del object
+// sino dejar igual
+// imprimir resultado
+let object = {
+  name: "German",
+  age: 23
 }
-object({ nombre: "German" });
+let string = "Hola [name], tienes [age].";
+let newArray = string.split(/[","|" "|"."]/);
+// console.log(string[0]);
+// console.log(newArray);
+let result = [];
+for (var i = 0; i <newArray.length; i++) {
+  for(key in object){
+    if (newArray[i] === key) {
+     result.push(object[key])
+     }
+  }
+  
+}
+console.log(result)
+
+
+
+
+
+
+
+
+
+// intento 6
+// iterar el string hasta encontrar match[] y reemplazarlos
+
+// let properties = {
+//   name: "German",
+//   age: 23
+// }
+// let string = "Hola [name], tienes [age]";

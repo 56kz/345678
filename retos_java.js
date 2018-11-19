@@ -658,29 +658,70 @@
 
 
 // intento 4
-// coger string y dividirlo en un array de palabras
-// iterar ese array
-// si encontrar [] para reemplazarlas por los value del object
-// sino dejar igual
-// imprimir resultado
-let object = {
-  name: "German",
-  age: 23
-}
-let string = "Hola [name], tienes [age].";
-let newArray = string.split(/[","|" "|"."]/);
-// console.log(string[0]);
-// console.log(newArray);
-let result = [];
-for (var i = 0; i <newArray.length; i++) {
-  for(key in object){
-    if (newArray[i] === key) {
-     result.push(object[key])
-     }
-  }
-  
-}
-console.log(result)
+
+// let object = {
+//   name: "German",
+//   age: 23
+// }
+// let string = "Hola [name], tienes [age].";
+// let newArray = string.split(/[","|" "|"."]/);
+// // console.log(string[0]);
+// // console.log(newArray);
+// let result = [];
+// for (var i = 0; i <newArray.length; i++) {
+//   for(key in object){
+//     if (newArray[i] === key) {
+//      result.push(object[key])
+//      }
+//   }
+//
+// }
+// console.log(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// iterar string hasta enocntrar []
+// function compose(string, object){
+//   const newString = string.split(/[" "|"."|","]/); //divide el string entre .y espacio, y los pasa a un array de varias strings
+//   console.log(newString);
+//   const result = []; // crea un array vacio para ir agregando los resultados de la iteracion
+//   newString.forEach(word => { //iterar cada una de las palabras del array
+//     if (word.match(/\[(.*?)\]/gi)) { // si encuentra palabras entre [] reemplacelas por
+//       const listo = word.replace(word, "listo");
+//       result.push(listo); //Agreguele a el array result la palabra modificada
+//     } else if (word.length === 0){ // si encunetra un espacio vacio peguele una coma
+//       result.push(",");
+//     } else { // si no encunetra nada de eso simplemeente pasele la palabra original
+//       result.push(word);
+//     };
+//   });
+//   console.log(result);
+// };
+//
+// compose(string, properties);
+
+
+
+
+
+
 
 
 
@@ -692,9 +733,46 @@ console.log(result)
 
 // intento 6
 // iterar el string hasta encontrar match[] y reemplazarlos
+// coger string y dividirlo en un array de palabras
+// iterar ese array
+// si encontrar [] para reemplazarlas por los value del object
+// sino dejar igual
+// imprimir resultado
+const object = {
+  name: "German",
+  age: 23
+};
+const string = "Hola [name], tienes [age]";
+let capture = string.match(/\[(.*?)\]/gi);
+// iterar string hasta enocntrar []
+function compose(string, object){
+  const newString = string.split(/[" "|"."|","]/); //divide el string entre .y espacio, y los pasa a un array de varias strings
+  // console.log(newString);
+  const result = []; // crea un array vacio para ir agregando los resultados de la iteracion
+  newString.forEach(word => { //iterar cada una de las palabras del array
+    if (word.match(/\[(.*?)\]/gi)) { // si encuentra palabras entre [] haga lo siguiente:
+      const finalword = word.slice(1, -1);// encuentra la palabra dentro del [],
+      // iterar el objeto y encontrar coincidencias entre la palabra encontrada
+      for(var key in object){
+        if(key === finalword){
+          result.push(object[key]);
+        }
+      }
 
-// let properties = {
-//   name: "German",
-//   age: 23
-// }
-// let string = "Hola [name], tienes [age]";
+
+      // const listo = word.replace(word, "listo");
+      // result.push(listo); //Agreguele a el array result la palabra modificada
+    } else if (word.length === 0){
+      // si encunetra un espacio vacio peguele una coma
+      result.push(",");
+    } else {
+      // si no encunetra nada de eso simplemeente pasele la palabra original
+      result.push(word);
+    };
+  });
+
+  const finalString = result.join();
+  console.log(finalString);
+};
+
+compose(string, object);

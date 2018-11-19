@@ -22,6 +22,19 @@
 // });
 
 
+// iterando un objeto   
+   // const object = {
+   //   name: "German",
+   //   age: 23
+   // };
+   //
+   // function iterateObject(object){
+   //  for(var key in object){
+   //    console.log(key, object[key]);
+   //  }
+   // };
+   //
+   // iterateObject(object);
 
 
 

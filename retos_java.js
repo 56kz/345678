@@ -738,41 +738,123 @@
 // si encontrar [] para reemplazarlas por los value del object
 // sino dejar igual
 // imprimir resultado
-const object = {
-  name: "German",
-  age: 23
-};
-const string = "Hola [name], tienes [age]";
-let capture = string.match(/\[(.*?)\]/gi);
+// const object = {
+//   name: "German",
+//   age: 23
+// };
+// const string = "Hola [name], tienes [age], y envianme un snapchat de esos, estoy camino a, bajarte, el queso";
+// let capture = string.match(/\[(.*?)\]/gi);
+// console.log(capture);
 // iterar string hasta enocntrar []
-function compose(string, object){
-  const newString = string.split(/[" "|"."|","]/); //divide el string entre .y espacio, y los pasa a un array de varias strings
-  // console.log(newString);
-  const result = []; // crea un array vacio para ir agregando los resultados de la iteracion
-  newString.forEach(word => { //iterar cada una de las palabras del array
-    if (word.match(/\[(.*?)\]/gi)) { // si encuentra palabras entre [] haga lo siguiente:
-      const finalword = word.slice(1, -1);// encuentra la palabra dentro del [],
-      // iterar el objeto y encontrar coincidencias entre la palabra encontrada
-      for(var key in object){
-        if(key === finalword){
-          result.push(object[key]);
-        }
-      }
 
 
-      // const listo = word.replace(word, "listo");
-      // result.push(listo); //Agreguele a el array result la palabra modificada
-    } else if (word.length === 0){
-      // si encunetra un espacio vacio peguele una coma
-      result.push(",");
-    } else {
-      // si no encunetra nada de eso simplemeente pasele la palabra original
-      result.push(word);
-    };
-  });
 
-  const finalString = result.join();
-  console.log(finalString);
-};
+// function compose(string, object){
+//   const newString = string.split(/[" "|"."|","]/); //divide el string entre .y espacio, y los pasa a un array de varias strings
+//   // console.log(newString);
+//   const result = []; // crea un array vacio para ir agregando los resultados de la iteracion
+//   newString.forEach(word => { //iterar cada una de las palabras del array
+//     if (word.match(/\[(.*?)\]/gi)) { // si encuentra palabras entre [] haga lo siguiente:
+//       const finalword = word.slice(1, -1);// encuentra la palabra dentro del [],
+//       // console.log(finalword);
+//       // iterar el objeto y encontrar coincidencias entre la palabra encontrada
+//       for(var key in object){ //iterar objeto
+//         if(key === finalword){ //si la palabra q se filtro finalword, es igual a la llave del objeto,
+//           result.push(object[key]);  // entoncs guardar en el arreglo el value del key identificado
+//         }
+//       }
+//
+//     } else if (word.length === 0){
+//       // si encunetra un espacio vacio peguele una coma
+//       result.push(",");
+//     } else {
+//       // si no encunetra nada de eso simplemeente pasele la palabra original
+//       result.push(word);
+//     };
+//   });
+//
+//   const finalString = result.join(" ");
+//   // console.log(finalString);
+// };/
 
-compose(string, object);
+// compose(string, object);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// intento 8 o algo asi!
+// const object = {
+//   name: "German",
+//   age: 23
+// };
+// const string = "Hola [name], tienes [age], y envianme un snapchat de esos, estoy camino a, bajarte, el queso";
+// // const capture = string.match(/\[(.*?)\]/gi);
+// // console.log(capture);
+//
+//
+//
+// //iterar sobre el string hasta encontrar [], de ahiencontrar el indice  de ese elemento,
+// function template(string, object){
+//   const capture = string.match(/\[(.*?)\]/gi);
+//   console.log(capture);
+//   const index = capture.indexOf();
+//   console.log(index)
+// }
+//
+// template(string, object);
+
+
+
+
+
+
+
+
+
+
+
+
+// var str = "this is a \"quoted\" string as you can 'read'";
+//
+// var patt = /'((?:\\.|[^'])*)'|"((?:\\.|[^"])*)"/igm;
+//
+// while (match = patt.exec(str)) {
+//   console.log(match.index + ' ' + patt.lastIndex);
+// }
+
+
+var string = "Hola [name], tu saldo es [cash]";
+var object = {
+  name: "Zorro",
+  cash: 23500
+}
+function template(string, object){
+  const result = string;
+  const capture = string.match(/\[(.*?)\]/gi);
+  console.log(capture); //es el array con los resultados
+  // const string = string;
+  for (var i = 0; i < capture.length; i++) { //Iterando sobre el array de matches
+    console.log(capture[i]);
+    const result = result.replace("[name]", "nombre")
+  }
+  console.log(result)
+}
+
+template(string, object);

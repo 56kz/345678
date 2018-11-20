@@ -840,21 +840,76 @@
 // }
 
 
-var string = "Hola [name], tu saldo es [cash]";
+var string = "Hola [name], tu saldo es [cash], y tu madre es [madre]";
 var object = {
   name: "Zorro",
-  cash: 23500
+  cash: 23500,
+  madre: "Diana"
 }
+
+
+
+
+
 function template(string, object){
-  const result = string;
   const capture = string.match(/\[(.*?)\]/gi);
   console.log(capture); //es el array con los resultados
-  // const string = string;
-  for (var i = 0; i < capture.length; i++) { //Iterando sobre el array de matches
-    console.log(capture[i]);
-    const result = result.replace("[name]", "nombre")
+
+      for(var key in object){  //itera el objeto
+        for (var i = 0; i < capture.length; i++) { //Iterando sobre el array de matches
+          const finalword = capture[i].slice(1, -1) // para poder comparar con el objeto
+        if (finalword === key) { // si la palabra match con el key enTonces reemplace
+          string = string.replace(capture[i], object[key]);
+        }
+
+      }
   }
-  console.log(result)
+
+  console.log(string)
 }
 
 template(string, object);
+
+
+
+//iterando prmero el capture y dsps el object
+// function template(string, object){
+//   const capture = string.match(/\[(.*?)\]/gi);
+//   console.log(capture); //es el array con los resultados
+//
+//   for (var i = 0; i < capture.length; i++) { //Iterando sobre el array de matches
+//     const finalword = capture[i].slice(1, -1) // para poder comparar con el objeto
+//       for(var key in object){  //itera el objeto
+//         if (finalword === key) { // si la palabra match con el key enTonces reemplace
+//           string = string.replace(capture[i], object[key]);
+//         }
+//
+//       }
+//   }
+//
+//   console.log(string)
+// }
+//
+// template(string, object);
+
+
+
+
+
+
+
+
+
+// function template(string, object){
+//   const result = string;
+//   const capture = string.match(/\[(.*?)\]/gi);
+//   console.log(capture); //es el array con los resultados
+//   // const string = string;
+//   for (var i = 0; i < capture.length; i++) { //Iterando sobre el array de matches
+//
+//     string = string.replace(capture[i], "nombre") // reemplaza el strign
+//   }
+//   console.log(string)
+// }
+//
+// template(string, object);

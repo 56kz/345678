@@ -22,7 +22,10 @@
 // });
 
 
-// iterando un objeto   
+
+
+
+// iterando un objeto
    // const object = {
    //   name: "German",
    //   age: 23
